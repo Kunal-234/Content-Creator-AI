@@ -1,10 +1,7 @@
 
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import { Button } from "@/components/ui/button";
 import WhyChoose from "@/components/WhyChoose";
-import Image from "next/image";
-import About from "./about/page";
 import Features from "@/components/Features";
 import HowItWorks from "@/components/HowItWorks";
 import CTA from "@/components/CTA";
