@@ -86,8 +86,8 @@ export default function Features() {
                   <div className="absolute top-4 right-1/2 bottom-4 hidden w-[0.5px] bg-black/10 dark:bg-white/10 sm:block lg:hidden" />
 
                   <div className="px-6 py-10">
-                    <p className="mb-1 text-2xl">{feature.icon}</p>
-                    <h3 className="mt-4 text-[19px] font-bold">
+                    <p className="mb-1 text-2xl text-gray-600">{feature.icon}</p>
+                    <h3 className="mt-4 text-[19px] text-gray-600 font-bold">
                       {feature.title}
                     </h3>
                     <p className="text-muted-foreground mt-1">

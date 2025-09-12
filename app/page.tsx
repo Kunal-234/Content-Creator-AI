@@ -6,6 +6,7 @@ import Features from "@/components/Features";
 import HowItWorks from "@/components/HowItWorks";
 import CTA from "@/components/CTA";
 import FAQs from "@/components/FAQs";
+import Footer from "@/components/Footer";
 
 export default function Home() {
 
@@ -30,6 +31,9 @@ export default function Home() {
       </section>
       <section className="z-40 pt-12">
         <CTA />
+      </section>
+      <section className="z-40 pt-10">
+        <Footer />
       </section>
     </div>
   );

@@ -42,7 +42,7 @@ const UsageTrack = () => {
 
   return (
     <div className='m-5'>
-      <div className='bg-gradient-to-br from-cyan-300 via-cyan-600 to-cyan-600 text-white  rounded-lg p-3'>
+      <div className='bg-gradient-to-br from-cyan-300 via-cyan-600 to-cyan-600 dark:from-cyan-900 dark:via-cyan-800 dark:to-cyan-900 text-white  rounded-lg p-3'>
         <h2 className='font-medium'>Credits</h2>
         <div className='h-2 mb-4 bg-white/40 w-full rounded-full mt-3'>
           <div className='h-2 bg-white rounded-full'
@@ -51,7 +51,7 @@ const UsageTrack = () => {
           <h2 className='text-sm my-2 mb-4'>{totalUsage}/1,00,000 credit used</h2>
         </div>
    <Link href='/dashboard/billing'>
-   <Button variant={'secondary'} className='w-full mt-6 text-cyan-600 cursor-pointer'>Upgrade</Button>
+   <Button variant={'secondary'} className='w-full mt-6 text-cyan-600 dark:bg-cyan-950 cursor-pointer'>Upgrade</Button>
    </Link> 
       </div>
     </div>

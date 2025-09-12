@@ -5,7 +5,7 @@ import React from 'react'
 
 const SearchSection = ({onSearchInput}: any ) => {
   return (
-    <div className='p-10 flex flex-col justify-center items-center text-white bg-gradient-to-br from-cyan-600 via-cyan-300 to-cyan-700'>
+    <div className='p-10 flex flex-col justify-center items-center text-white bg-gradient-to-br from-cyan-600 via-cyan-300 to-cyan-700 dark:from-[#033443] dark:via-[#] dark:to-[#] w-full'>
       <div className='w-full flex justify-end gap-4'>
         <AnimatedThemeToggler className='text-white' />
         <UserButton />

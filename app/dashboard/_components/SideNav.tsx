@@ -44,7 +44,7 @@ const SideNav = () => {
         <div className='h-screen relative p-5 shadow-sm'>
             <div className='flex justify-center'>
                 <Image src='/logo1.svg' height={36} width={36} alt='logo' />
-                 <span className=" text-2xl font-bold p-4 bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-600">
+                 <span className=" text-2xl font-bold p-4 bg-clip-text text-transparent bg-gradient-to-r  from-cyan-500  via-cyan-400 to-cyan-600">
             ContentAI
           </span>
             </div>
@@ -52,7 +52,7 @@ const SideNav = () => {
             <div className='mt-3'>
                 {
                     MenuList.map((menu, index) => (
-                       <Link key={index} href={menu.link}> <div className={`flex gap-2 mb-2 p-3 hover:bg-gradient-to-br from-cyan-600 via-cyan-500 to-cyan-300 hover:text-white rounded-lg cursor-pointer items-center ${path === menu.link && 'bg-gradient-to-br text-white'}`} key={index}>
+                       <Link key={index} href={menu.link}> <div className={`flex gap-2 mb-2 p-3 hover:bg-gradient-to-br dark:from-cyan-900 dark:via-cyan-800 dark:to-cyan-950  from-cyan-600 via-cyan-500 to-cyan-300 hover:text-white rounded-lg cursor-pointer items-center ${path === menu.link && 'bg-gradient-to-br text-white'}`} key={index}>
                             <menu.icon className='w-7 h-7' />
                             <h2 className='text-lg'>{menu.name}</h2>
                         </div>

@@ -30,7 +30,7 @@ const FormSection = ({ selectedTemplate,userFormInput,loading }: PROPS) => {
 
 
   return (
-    <div className='p-5 shadow-md rounded-lg bg-[white]/40 '>
+    <div className='p-5 shadow-md rounded-lg dark:bg-white/5 bg-[white]/40 '>
       {/* @ts-ignore */}
       <Image src={selectedTemplate?.icon} alt='icon'
         width={70} height={70} />
@@ -49,7 +49,7 @@ const FormSection = ({ selectedTemplate,userFormInput,loading }: PROPS) => {
 
           </div>
         ))}
-        <Button type='submit' className='w-full text-[18px] font-semibold py-6 cursor-pointer bg-gradient-to-br from-cyan-600 via-cyan-600 to-cyan-300 hover:opacity-80'
+        <Button type='submit' className='w-full text-[18px] dark:text-cyan-950 font-semibold py-6 cursor-pointer bg-gradient-to-br from-cyan-600 via-cyan-600 to-cyan-300 hover:opacity-80'
         disabled={loading} >
           {loading && <Loader2Icon className='animate-spin'/>}
           {loading ? "Generating content" : "Generate Content"}

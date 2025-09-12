@@ -78,15 +78,22 @@ export default function Hero() {
       </div>
       {/* hero image */}
       <Container>
-        <div className="relative mt-20 rounded-[32px] border border-cyan-200 bg-white p-4">
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 w-full scale-[1.1] bg-gradient-to-b from-transparent via-[#ECFEFF] to-[#ECFEFF] dark:hidden"></div>
-          <div className="rounded-[24px] border border-cyan-200 bg-cyan-100 p-2">
+        <div className="relative mt-20 rounded-[32px] border border-cyan-200 bg-white dark:bg-cyan-950 dark:border-cyan-800 p-4">
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 w-full scale-[1.1] bg-gradient-to-b from-transparent via-[#ECFEFF] to-[#ECFEFF] dark:from-transparent dark:via-[#033443] dark:to-[#033443] "></div>
+          <div className="rounded-[24px] border border-cyan-200 dark:border-cyan-700 dark:bg-cyan-900 bg-cyan-100 p-2">
             <img
               src="/preview2.png"
               alt="hero"
               width="1920"
               height="1080"
-              className="h-auto w-full rounded-xl object-contain"
+              className="h-auto w-full rounded-xl object-contain dark:hidden"
+            />
+            <img
+              src="/preview-dark.png"
+              alt="hero"
+              width="1920"
+              height="1080"
+              className="h-auto w-full rounded-xl object-contain hidden dark:block"
             />
           </div>
         </div>

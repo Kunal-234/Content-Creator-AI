@@ -74,7 +74,7 @@ const CreateNewContent = (props: PROPS) => {
   return (
     <div className='p-10'>
       <Link href={'/dashboard'}>
-        <Button className='cursor-pointer bg-transparent text-black hover:text-white'> <ArrowLeft />Back</Button>
+        <Button className='cursor-pointer bg-transparent text-black dark:bg-cyan-800 dark:text-cyan-950 hover:text-white'> <ArrowLeft />Back</Button>
       </Link>
       <div className='grid grid-cols-1 md:grid-cols-3 gap-5 py-5 '>
         {/* Form section  */}
