@@ -12,6 +12,7 @@ import { useTheme } from 'next-themes'
 import { AnimatedThemeToggler } from './magicui/animated-theme-toggler'
 import Image from 'next/image'
 
+
 export default function Header() {
   const { setTheme } = useTheme()
   const router = useRouter()
