@@ -9,9 +9,8 @@ import {
 } from '@/lib/constants/nav'
 import Link from 'next/link'
 import { useTheme } from 'next-themes'
-import ModeToggleButton from './themes/ModeToggleButton'
-import Image from 'next/image'
 import { AnimatedThemeToggler } from './magicui/animated-theme-toggler'
+import Image from 'next/image'
 
 export default function Header() {
   const { setTheme } = useTheme()
@@ -25,11 +24,10 @@ export default function Header() {
         {/* LEFT SIDE — logo + nav links */}
         <div className="flex items-center gap-3">
           <Link href="/" className="flex items-center gap-1">
-            {/* <Image src='/logo1.svg' height={26} width={26} alt='logo' /> */}
-            <div className='rounded-full bg-gradient-to-br from-cyan-800 via-cyan-600 to-cyan-500 w-7 h-7 flex items-center justify-center text-white' >C</div>
-            {/* <h1 className="font-bold text-2xl px-2 tracking-tight">
+            <Image src='/logo1.svg' height={26} width={26} alt='logo' />
+            <h1 className="font-bold text-2xl px-2 tracking-tight">
               <span className='text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 via-cyan-300 to-cyan-500'>ContentAI</span>
-              </h1> */}
+              </h1>
           </Link>
 
           {/* nav menu - desktop */}
