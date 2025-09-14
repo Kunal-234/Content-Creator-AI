@@ -51,7 +51,7 @@ const UsageTrack = () => {
           <h2 className='text-sm my-2 mb-4'>{totalUsage}/1,00,000 credit used</h2>
         </div>
    <Link href='/dashboard/billing'>
-   <Button variant={'secondary'} className='w-full mt-6 text-cyan-600 dark:bg-cyan-950 cursor-pointer'>Upgrade</Button>
+   <Button variant={'secondary'} className='w-full mt-6 text-cyan-600 dark:bg-white/10 dark:text-cyan-400 cursor-pointer'>Upgrade</Button>
    </Link> 
       </div>
     </div>

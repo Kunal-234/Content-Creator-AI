@@ -25,7 +25,7 @@ const OutputSection = ({ aiResponse }: { aiResponse: string }) => {
       <div className='flex justify-between items-center p-5'>
         <h2 className='font-medium text-lg'>Your Result</h2>
         <Button
-         className='flex bg-black dark:bg-cyan-800 dark:text-white hover:bg-black/70 cursor-pointer gap-2 text-sm'
+         className='flex bg-black/70 dark:bg-cyan-800 dark:text-white hover:bg-black/70 cursor-pointer gap-2 text-sm'
          onClick={()=> navigator.clipboard.writeText(editorRef.current?.getInstance().getMarkdown() || '')}
          > <Copy className='w-3 h-3' />Copy </Button>
       </div>
