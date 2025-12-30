@@ -7,7 +7,7 @@ import Templates from '@/app/(data)/Templates'
 import { Button } from '@/components/ui/button'
 import { ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
-import { chatSession } from '@/utils/AiModal'
+// Server-side API will handle AI calls; do not call GoogleGenerativeAI from client
 import { db } from '@/utils/db'
 import { AIOutput } from '@/utils/schema'
 import { useUser } from '@clerk/nextjs'
@@ -32,7 +32,7 @@ const CreateNewContent = (props: PROPS) => {
   const [aiResponse, setAiResponse] = useState<string>("");
   const { user } = useUser();
   const { totalUsage, setTotalUsage } = useContext(TotalUsageContext);
-  const {updateCreditUsage, setUpdateCreditUsage}=useContext(UpdateCreditUsageContext);
+  const { updateCreditUsage, setUpdateCreditUsage } = useContext(UpdateCreditUsageContext);
 
   const router = useRouter();
 
@@ -47,12 +47,35 @@ const CreateNewContent = (props: PROPS) => {
 
     const finalAIPrompt = JSON.stringify(formData) + ',' + selectedPrompt + 'never return output in RTF.';
 
-    const result = await chatSession.sendMessage(finalAIPrompt);
+    try {
+      const res = await fetch('/api/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt: finalAIPrompt }),
+      });
 
-    setAiResponse(result.response.text());
-    await saveInDb(JSON.stringify(formData), selectedTemplate?.slug, result.response.text())
-    setLoading(false);
-    setUpdateCreditUsage(Date.now())
+      if (!res.ok) {
+        if (res.status === 429) {
+          setAiResponse('AI service rate limit exceeded. Please try again later or check your billing/plan.');
+        } else {
+          const errorData = await res.text();
+          console.error('Server error response:', errorData);
+          setAiResponse(`AI generation failed. Server says: ${errorData}`);
+        }
+        return;
+      }
+
+      const data = await res.json();
+      const text = data?.text ?? '';
+      setAiResponse(text);
+      await saveInDb(JSON.stringify(formData), selectedTemplate?.slug, text);
+      setUpdateCreditUsage(Date.now());
+    } catch (err: any) {
+      console.error('Client fetch to /api/generate failed:', err);
+      setAiResponse('AI generation failed. Please try again.');
+    } finally {
+      setLoading(false);
+    }
 
   }
 
