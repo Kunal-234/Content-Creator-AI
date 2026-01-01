@@ -42,7 +42,7 @@ const UsageTrack = () => {
 
   return (
     <div className='m-5'>
-      <div className='bg-gradient-to-br from-cyan-300 via-cyan-600 to-cyan-600 dark:from-cyan-900 dark:via-cyan-800 dark:to-cyan-900 text-white  rounded-lg p-3'>
+      <div className='bg-linear-to-br from-cyan-300 via-cyan-600 to-cyan-600 dark:from-cyan-900 dark:via-cyan-800 dark:to-cyan-900 text-white  rounded-lg p-3'>
         <h2 className='font-medium'>Credits</h2>
         <div className='h-2 mb-4 bg-white/40 w-full rounded-full mt-3'>
           <div className='h-2 bg-white rounded-full'

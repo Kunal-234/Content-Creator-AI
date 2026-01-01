@@ -7,7 +7,6 @@ import Templates from '@/app/(data)/Templates'
 import { Button } from '@/components/ui/button'
 import { ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
-// Server-side API will handle AI calls; do not call GoogleGenerativeAI from client
 import { db } from '@/utils/db'
 import { AIOutput } from '@/utils/schema'
 import { useUser } from '@clerk/nextjs'

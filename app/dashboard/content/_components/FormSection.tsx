@@ -34,7 +34,7 @@ const FormSection = ({ selectedTemplate,userFormInput,loading }: PROPS) => {
       {/* @ts-ignore */}
       <Image src={selectedTemplate?.icon} alt='icon'
         width={70} height={70} />
-      <h2 className='font-bold text-3xl pt-4 mb-2'> <span className='text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 via-cyan-600 to-cyan-300'>{selectedTemplate?.name} </span></h2>
+      <h2 className='font-bold text-3xl pt-4 mb-2'> <span className='text-transparent bg-clip-text bg-linear-to-r from-cyan-500 via-cyan-600 to-cyan-300'>{selectedTemplate?.name} </span></h2>
       <p className='text-gray-500 text-sm'>{selectedTemplate?.desc}</p>
 
       <form className='mt-6 ' onSubmit={onSubmit}>
@@ -49,7 +49,7 @@ const FormSection = ({ selectedTemplate,userFormInput,loading }: PROPS) => {
 
           </div>
         ))}
-        <Button type='submit' className='w-full text-[18px] dark:text-cyan-950 font-semibold py-6 cursor-pointer bg-gradient-to-br from-cyan-600 via-cyan-600 to-cyan-300 hover:opacity-80'
+        <Button type='submit' className='w-full text-[18px] dark:text-cyan-950 font-semibold py-6 cursor-pointer bg-linear-to-br from-cyan-600 via-cyan-600 to-cyan-300 hover:opacity-80'
         disabled={loading} >
           {loading && <Loader2Icon className='animate-spin'/>}
           {loading ? "Generating content" : "Generate Content"}
