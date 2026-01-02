@@ -17,7 +17,8 @@ export async function GET() {
     const model = genAI.getGenerativeModel({ model: 'gemini-flash-latest' })
     const chat = model.startChat({ generationConfig: { maxOutputTokens: 16, temperature: 0.0, responseMimeType: 'text/plain' }, history: [] })
     const result = await chat.sendMessage('ping')
-    const text = result?.response?.text?.() ?? ''
+    //@ts-ignore
+    const text = result?.responseText ?? ''
     return NextResponse.json({ ok: true, text })
   } catch (err: any) {
     const message = (err && err.message) ? String(err.message) : String(err)

@@ -4,8 +4,7 @@ import { GoogleGenerativeAI } from '@google/generative-ai'
 const sleep = (ms: number) => new Promise((res) => setTimeout(res, ms))
 
 export async function POST(request: Request) {
-  console.log('Available Env Keys:', Object.keys(process.env).filter(k => k.includes('GEMINI')));
-  const apiKey = process.env.GOOGLE_GEMINI_API_KEY || process.env.NEXT_PUBLIC_GOOGLE_GEMINI_API_KEY ||''
+  const apiKey =  process.env.NEXT_PUBLIC_GOOGLE_GEMINI_API_KEY ||''
 
   if (!apiKey) {
     return NextResponse.json({
@@ -24,11 +23,11 @@ export async function POST(request: Request) {
   const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' })
 
   const generationConfig = {
-    maxOutputTokens: 8152,
     temperature: 0.7,
     topP: 0.95,
     topK: 64,
     responseMimeType: 'text/plain',
+    maxOutputTokens: 25000,
   }
 
   const maxAttempts = 3
