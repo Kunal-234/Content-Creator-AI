@@ -14,6 +14,7 @@ import moment from 'moment'
 import { TotalUsageContext } from '@/app/(context)/TotalUsageContext'
 import { useRouter } from 'next/navigation'
 import { UpdateCreditUsageContext } from '@/app/(context)/UpdateCreditUsageContext'
+import { toast } from 'sonner'
 
 interface PROPS {
   params: Promise<{ "template-slug": string }>
@@ -44,7 +45,7 @@ const CreateNewContent = (props: PROPS) => {
     setLoading(true);
     const selectedPrompt = selectedTemplate?.aiPrompt;
 
-    const finalAIPrompt = JSON.stringify(formData) + ',' + selectedPrompt + 'never return output in RTF.';
+    const finalAIPrompt = JSON.stringify(formData) + ', ' + selectedPrompt + '. Generate the content in Markdown format. Do not add any conversational text, preambles, or explanations. Return ONLY the generated content. Never return output in RTF.';
 
     try {
       const res = await fetch('/api/generate', {
@@ -55,11 +56,11 @@ const CreateNewContent = (props: PROPS) => {
 
       if (!res.ok) {
         if (res.status === 429) {
-          setAiResponse('AI service rate limit exceeded. Please try again later or check your billing/plan.');
+          toast.error('AI service rate limit exceeded. Please try again later or check your billing/plan.');
         } else {
           const errorData = await res.text();
           console.error('Server error response:', errorData);
-          setAiResponse(`AI generation failed. Server says: ${errorData}`);
+          toast.error(`AI generation failed. Please try again.`);
         }
         return;
       }
@@ -71,7 +72,7 @@ const CreateNewContent = (props: PROPS) => {
       setUpdateCreditUsage(Date.now());
     } catch (err: any) {
       console.error('Client fetch to /api/generate failed:', err);
-      setAiResponse('AI generation failed. Please try again.');
+      toast.error('AI generation failed. Please try again.');
     } finally {
       setLoading(false);
     }
