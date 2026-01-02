@@ -50,7 +50,7 @@ export default function HistoryTable( { history: initialHistory }) {
           </tr>
         </thead>
         <tbody className="divide-y divide-gray-200 bg-white/50 dark:bg-white/5 dark:divide-gray-200/30">
-          {history.map((item: any) => (
+          {(history || []).slice(0, 10).map((item: any) => (
             <tr key={item.id} className="hover:bg-cyan-50 dark:hover:bg-cyan-900/40 transition-colors">
               <td className="px-6 py-4 font-medium text-cyan-600 dark:text-cyan-400 capitalize">
                 {item.templateSlug.replaceAll("-", " ")}
@@ -78,7 +78,8 @@ export default function HistoryTable( { history: initialHistory }) {
                 </div>
               </td>
             </tr>
-          ))}
+          ))
+          }
         </tbody>
       </table>
     </div>
