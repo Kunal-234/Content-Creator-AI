@@ -30,7 +30,7 @@ const FormSection = ({ selectedTemplate,userFormInput,loading }: PROPS) => {
 
 
   return (
-    <div className='p-5 shadow-md rounded-lg dark:bg-white/5 bg-[white]/40 '>
+    <div className='p-5 border border-cyan-200 dark:border-cyan-900 rounded-lg dark:bg-white/5 bg-[white]/40 '>
       {/* @ts-ignore */}
       <Image src={selectedTemplate?.icon} alt='icon'
         width={70} height={70} />

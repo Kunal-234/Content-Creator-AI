@@ -4,7 +4,7 @@ import { Copy } from 'lucide-react'
 
 const OutputSection = ({ aiResponse }: { aiResponse: string }) => {
   return (
-    <div className="bg-white/40 dark:bg-white/5 shadow-lg rounded-lg border">
+    <div className="bg-white/40 dark:bg-white/5 rounded-lg border border-cyan-200 dark:border-cyan-900">
       <div className="flex justify-between items-center p-5 border-b">
         <h2 className="font-medium text-lg">Your Result</h2>
         <Button
@@ -18,7 +18,7 @@ const OutputSection = ({ aiResponse }: { aiResponse: string }) => {
 
       <div className="p-5">
         <textarea
-          className="w-full h-[500px] bg-transparent outline-none resize-y p-2 text-sm leading-relaxed"
+          className="w-full h-125 bg-transparent outline-none resize-y p-2 text-sm leading-relaxed"
           value={aiResponse}
           readOnly
           placeholder="AI response will appear here..."
