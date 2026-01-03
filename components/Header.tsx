@@ -11,6 +11,8 @@ import Link from 'next/link'
 import { useTheme } from 'next-themes'
 import { AnimatedThemeToggler } from './magicui/animated-theme-toggler'
 import Image from 'next/image'
+import { useState } from 'react'
+import { Menu, X } from 'lucide-react'
 
 
 export default function Header() {
@@ -19,7 +21,14 @@ export default function Header() {
   const { isSignedIn } = useAuth()
   const { signOut } = useClerk()
 
+   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
+
+  const handleToggle = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   return (
+    <>
     <header className="border-border supports-backdrop-blur:bg-background/80 bg-background/40 sticky top-0 z-40 w-full border-b px-6 py-4 backdrop-blur-lg">
       <div className="mx-auto flex max-w-5xl items-center justify-between">
         {/* LEFT SIDE — logo + nav links */}
@@ -27,7 +36,7 @@ export default function Header() {
           <Link href="/" className="flex items-center gap-1">
             <Image src='/logo1.svg' height={26} width={26} alt='logo' />
             <h1 className="font-bold text-2xl px-2 tracking-tight">
-              <span className='text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 via-cyan-300 to-cyan-500'>ContentAI</span>
+              <span className='text-transparent bg-clip-text bg-linear-to-r from-cyan-500 via-cyan-300 to-cyan-500'>ContentAI</span>
               </h1>
           </Link>
 
@@ -129,8 +138,56 @@ export default function Header() {
               )}
             </div>
           )} */}
+
         </div>
+          {/* Toggle Button  */}
+           <div className="md:hidden flex gap-2">
+           <AnimatedThemeToggler className='text-cyan-500 dark:text-white' />
+            <button onClick={handleToggle} className="text-cyan-500 dark:text-white">
+              <div
+                className={`transform transition-transform duration-500 z-40 ${
+                  isMobileMenuOpen ? "rotate-360" : "rotate-180"
+                }`}
+              >
+                {isMobileMenuOpen ? <X size={30} /> : <Menu size={30} />}
+              </div>
+            </button>
+          </div>
       </div>
     </header>
+
+     {/* Mobile view */}
+      <div
+        className={`${
+          isMobileMenuOpen ? "block" : "hidden"
+        } fixed top-2 pt-15 right-4 bg-white/5 w-64 py-4 rounded-md shadow-2xl z-30`}
+      >
+        <div className="flex flex-col items-center font-audiowide backdrop-blur-sm text-center text-white space-y-4 px-4 py-2">
+          <Link href="/" className="text-white px-4 py-2 rounded w-full">
+            Home
+          </Link>
+          <Link href="/dashboard" className="text-cyan-600 dark:text-white px-4 py-2 rounded w-full">
+            Dashboard
+          </Link>
+          <Link href="/pricing" className="text-cyan-600 dark:text-white px-4 py-2 rounded w-full">
+            Pricing
+          </Link>
+          <Link href="/about" className="text-cyan-600 dark:text-white px-4 py-2 rounded w-full">
+            About Us
+          </Link>
+          <Link href="/dashboard/settings" className="text-cyan-600 dark:text-white px-4 py-2 rounded w-full">
+            Settings
+          </Link>
+         {!isSignedIn ? 
+         <Link href="/sign-in" className="w-full bg-cyan-800/80 text-cyan-600 dark:text-white px-4 py-2 rounded"> 
+            Sign In
+          </Link> :
+         <Link href="/sign-in" className="w-full bg-cyan-600/80 text-white px-4 py-2 rounded"> 
+            Log ut
+          </Link>
+         } 
+        </div>
+      </div>
+    </>
   )
 }
