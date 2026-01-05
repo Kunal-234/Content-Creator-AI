@@ -179,12 +179,18 @@ export default function Header() {
             Settings
           </Link>
          {!isSignedIn ? 
-         <Link href="/sign-in" className="w-full bg-cyan-800/80 text-cyan-600 dark:text-white px-4 py-2 rounded"> 
+         <Link href="/sign-in" className="w-full bg-cyan-600/80 text-white dark:text-white px-4 py-2 rounded"> 
             Sign In
           </Link> :
-         <Link href="/sign-in" className="w-full bg-cyan-600/80 text-white px-4 py-2 rounded"> 
-            Log ut
-          </Link>
+         <Button
+          onClick={() => {
+                  signOut()
+                  setTheme('light') // force light mode on sign out
+                  localStorage.removeItem('theme') // clear theme from local storage
+                }}
+          className="w-full bg-cyan-600/80 text-white px-4 py-2 rounded"> 
+            Log out
+          </Button>
          } 
         </div>
       </div>
